@@ -42,13 +42,11 @@ export default function ProgramPage() {
   const { programId } = useParams();
   const program = programData[programId];
 
-  // ✅ Safe usage even if program is briefly undefined
   const typedTitle = useTypingEffect(program?.title || "", 60);
 
   const [openModule, setOpenModule] = useState(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
-  // Scroll to top when program changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [programId]);
@@ -61,7 +59,7 @@ export default function ProgramPage() {
     );
   }
 
-  // ⭐ Learning Journey (Timeline)
+  // ⭐ Learning Journey Data
   const learningJourney = [
     {
       label: "Step 1",
@@ -89,63 +87,54 @@ export default function ProgramPage() {
       role: "Final Year – CSBS",
       feedback:
         "Before this program I was scared of projects. Now I have a complete portfolio and feel confident for internships.",
-      image:
-        "https://i.postimg.cc/pdQm4Vnb/woman-1.jpg",
+      image: "https://i.postimg.cc/pdQm4Vnb/woman-1.jpg",
     },
     {
       name: "Vignesh",
       role: "Junior Developer Intern",
       feedback:
         "The roadmap and practice tasks helped me understand exactly what to learn next. It felt very structured and practical.",
-      image:
-        "https://i.postimg.cc/6Q5zVt0M/man-2.jpg",
+      image: "https://i.postimg.cc/6Q5zVt0M/man-2.jpg",
     },
     {
       name: "Sangeetha",
       role: "2nd Year Student",
       feedback:
         "The real-world examples made learning simple. The projects gave me something strong to show in my resume.",
-      image:
-        "https://i.postimg.cc/fTZXbn3L/woman-3.jpg",
+      image: "https://i.postimg.cc/fTZXbn3L/woman-3.jpg",
     },
   ];
-  
-  
-  
 
-  // ⭐ Auto-slide testimonials (fixed to use finalTestimonials)
+  // Auto-slide testimonials
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveTestimonial(
         (prev) => (prev + 1) % finalTestimonials.length
       );
-    }, 5000); // 5 seconds
-
+    }, 5000);
     return () => clearInterval(interval);
-  }, [finalTestimonials.length]);
+  }, []);
 
-  // Animation variants
-  const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const fadeIn = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0 },
-  };
+  const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } };
+  const fadeIn = { hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } };
 
   return (
     <div className="pt-24 bg-gray-50 min-h-screen flex flex-col">
-      {/* ⚡ HERO SECTION (Premium Animation Style) */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-900 to-indigo-700 text-white py-20 md:py-24">
-        {/* Glowing floating blobs */}
-        <div className="absolute top-10 left-10 w-24 h-24 bg-purple-400 opacity-30 rounded-full blur-3xl animate-[glow_6s_ease-in-out_infinite]" />
-        <div className="absolute bottom-14 right-14 w-32 h-32 bg-indigo-400 opacity-30 rounded-full blur-3xl animate-[glow_8s_ease-in-out_infinite]" />
+
+      {/* ⚡ HERO SECTION */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-900 to-indigo-700 
+      text-white py-14 sm:py-20 md:py-24"> 
+      {/* 🔥 FIX #2 (smaller mobile padding) */}
+
+        {/* Floating Blobs */}
+        <div className="absolute top-10 left-10 w-24 h-24 bg-purple-400 opacity-30 rounded-full blur-3xl animate-[glow_6s_infinite]" />
+        <div className="absolute bottom-14 right-14 w-32 h-32 bg-indigo-400 opacity-30 rounded-full blur-3xl animate-[glow_8s_infinite]" />
 
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 relative z-10 items-center">
+
           {/* LEFT SECTION */}
           <div className="animate-[fadeUp_0.9s_ease-out]">
+
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="text-yellow-300" />
               <p className="uppercase tracking-wider text-purple-200 text-sm font-semibold">
@@ -166,14 +155,7 @@ export default function ProgramPage() {
             {/* Highlights */}
             <div className="grid grid-cols-1 gap-4 mt-10">
               {program.highlights?.map((h, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg hover:bg-white/20 transition-all duration-300 animate-[fadeUp_1s_ease-out] opacity-0"
-                  style={{
-                    animationDelay: `${0.15 * i}s`,
-                    animationFillMode: "forwards",
-                  }}
-                >
+                <div key={i} className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white/10 border">
                   <div className="bg-yellow-400/20 p-2 rounded-full">
                     <CheckCircle className="text-yellow-300 w-6 h-6" />
                   </div>
@@ -184,43 +166,42 @@ export default function ProgramPage() {
 
             {/* Buttons */}
             <div className="mt-8 flex flex-wrap gap-4">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="px-8 py-3 bg-white text-purple-700 font-bold rounded-full shadow-md hover:bg-purple-100 transition flex items-center gap-2"
-              >
-                Enroll Now
-                <ArrowRight className="w-5 h-5" />
+              <motion.button whileHover={{ scale: 1.05, y: -2 }} className="px-8 py-3 bg-white text-purple-700 font-bold rounded-full flex items-center gap-2">
+                Enroll Now <ArrowRight className="w-5 h-5" />
               </motion.button>
 
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="px-8 py-3 border border-white rounded-full hover:bg-white hover:text-purple-700 transition"
-              >
+              <motion.button whileHover={{ scale: 1.03 }} className="px-8 py-3 border border-white rounded-full hover:bg-white hover:text-purple-700">
                 Download Curriculum
               </motion.button>
             </div>
+
           </div>
 
           {/* RIGHT HERO IMAGE */}
           <div className="flex justify-center md:justify-end animate-[fadeUp_1.2s_ease-out]">
-            <div className="relative p-[3px] rounded-3xl bg-gradient-to-r from-purple-300 to-purple-500 shadow-2xl animate-[float_7s_ease-in-out_infinite]">
-              <div className="bg-white/10 backdrop-blur-2xl rounded-3xl p-4 border border-white/20 shadow-xl">
-                <img
-                  src={program.heroImg}
-                  alt={program.title}
-                  className="w-[260px] sm:w-[320px] md:w-[400px] rounded-2xl object-contain"
-                />
+            <div className="relative p-[3px] rounded-3xl bg-gradient-to-r from-purple-300 to-purple-500">
+
+              <div className="bg-white/10 backdrop-blur-2xl rounded-3xl p-4 border shadow-xl">
+
+                {/* FIX #1 (mobile responsive image) */}
+<img
+  src={program.heroImg}
+  alt={program.title}
+  className="w-full max-w-[260px] sm:max-w-[320px] md:max-w-[400px] rounded-2xl object-contain mx-auto"
+/>
+
+
               </div>
+
             </div>
           </div>
+
         </div>
       </section>
 
       {/* ⭐ PREMIUM HIGHLIGHTS SECTION */}
       <div className="bg-purple-50">
-        <motion.section
+         <motion.section
           className="max-w-7xl mx-auto px-6 py-20"
           variants={fadeUp}
           initial="hidden"
@@ -228,7 +209,7 @@ export default function ProgramPage() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="text-center mb-14">
+                    <div className="text-center mb-14">
             <h2 className="text-2xl text-purple-600 font-bold drop-shadow-sm">
               Why Choose This Program?
             </h2>
@@ -357,7 +338,8 @@ export default function ProgramPage() {
           <span className="text-purple-600">confident, project-ready developer.</span>
         </p>
 
-        <div className="relative pl-10">
+        {/* 🔥 FIX #3 — mobile friendly padding */}
+        <div className="relative pl-6 sm:pl-10">
           <motion.div
             className="absolute left-4 top-0 bottom-0 w-[4px] bg-gradient-to-b from-purple-400 via-purple-500 to-indigo-600 rounded-full shadow-lg"
             initial={{ height: 0 }}
@@ -373,12 +355,14 @@ export default function ProgramPage() {
                 transition={{ duration: 0.5, delay: idx * 0.15 }}
                 className="relative flex gap-6 items-start"
               >
+                {/* Dot */}
                 <div className="absolute left-0 -translate-x-[6px] flex items-center justify-center">
                   <div className="w-6 h-6 rounded-full bg-white border-2 border-purple-600 shadow-md relative">
                     <span className="absolute inset-0 rounded-full bg-purple-500 opacity-40 blur-md animate-ping" />
                   </div>
                 </div>
 
+                {/* Card */}
                 <motion.div
                   whileHover={{ y: -5, scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 200, damping: 15 }}
@@ -463,7 +447,7 @@ export default function ProgramPage() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {[
+          {[ 
             {
               title: "Portfolio Website",
               desc: "A polished personal website built using modern UI principles and responsive design standards.",
@@ -492,7 +476,10 @@ export default function ProgramPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ y: -4, scale: 1.01 }}
-              className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all p-6 flex flex-col gap-4"
+
+              /* 🔥 FIX #4: Mobile-friendly padding */
+              className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all 
+              p-4 sm:p-6 flex flex-col gap-4"
             >
               <div className="p-3 rounded-xl bg-purple-50 w-fit">
                 {project.icon}
@@ -516,7 +503,8 @@ export default function ProgramPage() {
 
       {/* ⭐ PREMIUM AI STUDENT SUCCESS STORIES SECTION */}
       <motion.section
-        className="max-w-7xl mx-auto px-6 py-24"
+  className="w-full px-4 sm:px-6 py-24 max-w-7xl mx-auto"
+
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
@@ -533,7 +521,9 @@ export default function ProgramPage() {
           </p>
         </div>
 
-        <div className="relative overflow-hidden">
+        {/* 🔥 FIX #5 — Make slider mobile-friendly */}
+        <div className="relative overflow-hidden w-full">
+
           <motion.div
             className="flex"
             animate={{ x: `-${activeTestimonial * 100}%` }}
@@ -549,23 +539,22 @@ export default function ProgramPage() {
                 <motion.div
                   whileHover={{ scale: 1.02, y: -6 }}
                   transition={{ type: "spring", stiffness: 220, damping: 16 }}
-                  className="bg-white/80 backdrop-blur-xl border border-gray-200/70 shadow-xl hover:shadow-2xl rounded-3xl p-10 transition-all duration-300 relative"
+                  className="bg-white/80 backdrop-blur-xl border border-gray-200/70 shadow-xl hover:shadow-2xl 
+                  rounded-3xl p-8 sm:p-10 transition-all duration-300"
                 >
-                  <p className="text-gray-800 text-lg leading-relaxed italic relative">
+                  <p className="text-gray-800 text-lg leading-relaxed italic">
                     "{t.feedback}"
                   </p>
 
-                  <div className="flex items-center justify-between mt-8 relative z-10">
+                  <div className="flex items-center justify-between mt-8">
                     <div className="flex items-center gap-4">
-                    <img
-  src={`https://randomuser.me/api/portraits/${
-    index % 2 === 0 ? "women" : "men"
-  }/${(index + 10) % 90}.jpg`}
-  alt={t.name}
-  className="w-14 h-14 rounded-full object-cover shadow-lg border border-purple-200"
-/>
-
-
+                      <img
+                        src={`https://randomuser.me/api/portraits/${
+                          index % 2 === 0 ? "women" : "men"
+                        }/${(index + 10) % 90}.jpg`}
+                        alt={t.name}
+                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover shadow-lg border border-purple-200"
+                      />
 
                       <div>
                         <h4 className="text-lg font-bold text-gray-900">
@@ -576,7 +565,7 @@ export default function ProgramPage() {
                     </div>
 
                     <div className="flex gap-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
+                      {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
                           className="w-5 h-5 text-yellow-400 fill-yellow-400"
@@ -589,6 +578,7 @@ export default function ProgramPage() {
             ))}
           </motion.div>
 
+          {/* Dots */}
           <div className="flex justify-center mt-6 gap-2">
             {finalTestimonials.map((_, idx) => (
               <button
@@ -606,69 +596,53 @@ export default function ProgramPage() {
       </motion.section>
 
       {/* ⭐ PREMIUM FINAL CTA SECTION */}
-<motion.section
-  variants={fadeUp}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.3 }}
-  transition={{ duration: 0.8 }}
-  className="relative py-24 px-6 overflow-hidden"
->
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8 }}
+        className="relative py-24 px-6 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-indigo-800 to-purple-700 opacity-95"></div>
+        <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-500/40 blur-[120px] rounded-full"></div>
+        <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-indigo-500/40 blur-[120px] rounded-full"></div>
 
-  {/* Background Gradient Blur Elements */}
-  <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-indigo-800 to-purple-700 opacity-95"></div>
-  <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-500/40 blur-[120px] rounded-full"></div>
-  <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-indigo-500/40 blur-[120px] rounded-full"></div>
+        <div className="relative max-w-4xl mx-auto text-center text-white">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="backdrop-blur-xl bg-white/10 border border-white/20 p-12 rounded-3xl shadow-2xl"
+          >
+            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">
+              Start Your {program.title} Journey Today
+            </h2>
 
-  {/* Center Content */}
-  <div className="relative max-w-4xl mx-auto text-center text-white">
+            <p className="text-purple-100 mt-4 text-lg max-w-2xl mx-auto leading-relaxed">
+              Level up your skills with expert-led training, real-world projects, and a structured career roadmap.
+            </p>
 
-    {/* Premium Glass Card */}
-    <motion.div
-      initial={{ opacity: 0, scale: 0.92 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      className="backdrop-blur-xl bg-white/10 border border-white/20 p-12 rounded-3xl shadow-2xl relative"
-    >
-      {/* Glow Border */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-400 to-indigo-400 opacity-20 blur-xl"></div>
+            <div className="mt-10 flex flex-wrap justify-center gap-5">
+              <motion.button
+                whileHover={{ scale: 1.07, y: -4 }}
+                className="px-10 py-4 bg-white text-purple-800 font-bold text-lg rounded-full shadow-xl 
+                hover:bg-purple-100 transition flex items-center gap-2"
+              >
+                Enroll Now <ArrowRight className="w-5 h-5" />
+              </motion.button>
 
-      <h2 className="text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">
-        Start Your {program.title} Journey Today
-      </h2>
-
-      <p className="text-purple-100 mt-4 text-lg max-w-2xl mx-auto leading-relaxed">
-        Level up your skills with expert-led training, real-world projects, and a structured career roadmap.
-      </p>
-
-      {/* CTA Buttons */}
-      <div className="mt-10 flex flex-wrap justify-center gap-5">
-
-        {/* Primary CTA */}
-        <motion.button
-          whileHover={{ scale: 1.07, y: -4 }}
-          whileTap={{ scale: 0.96 }}
-          className="px-10 py-4 bg-white text-purple-800 font-bold text-lg rounded-full shadow-xl 
-                    hover:bg-purple-100 transition flex items-center gap-2"
-        >
-          Enroll Now <ArrowRight className="w-5 h-5" />
-        </motion.button>
-
-        {/* Secondary Outline Button */}
-        <motion.button
-          whileHover={{ scale: 1.07, y: -4 }}
-          whileTap={{ scale: 0.96 }}
-          className="px-10 py-4 border border-white/50 text-white font-semibold text-lg rounded-full
-                    hover:bg-white/10 transition"
-        >
-          Download Brochure
-        </motion.button>
-
-      </div>
-    </motion.div>
-  </div>
-</motion.section>
-
+              <motion.button
+                whileHover={{ scale: 1.07, y: -4 }}
+                className="px-10 py-4 border border-white/50 text-white font-semibold text-lg rounded-full
+                hover:bg-white/10 transition"
+              >
+                Download Brochure
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
 
       <Footer />
     </div>

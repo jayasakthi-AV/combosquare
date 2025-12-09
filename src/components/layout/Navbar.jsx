@@ -185,31 +185,104 @@ export default function Navbar() {
             </details>
 
             {/* PROGRAMS MOBILE */}
-            <details className="w-full">
-              <summary className="cursor-pointer py-2 flex justify-between items-center">
-                Programs <span>▼</span>
-              </summary>
-              <div className="pl-4 mt-2 space-y-2 text-white/80">
-                <Link to="/program/full-stack" onClick={() => setMobileOpen(false)}>Full Stack Developer Program</Link>
-                <Link to="/program/ai-foundations" onClick={() => setMobileOpen(false)}>AI Foundations</Link>
-                <Link to="/program/data-science" onClick={() => setMobileOpen(false)}>Data Science Starter</Link>
-                <Link to="/program/ui-ux" onClick={() => setMobileOpen(false)}>UI/UX Design Essentials</Link>
-              </div>
-            </details>
+            {/* PROGRAMS MOBILE */}
+<details className="w-full">
+  <summary className="cursor-pointer py-2 flex justify-between items-center">
+    Programs <span>▼</span>
+  </summary>
+
+  <div className="pl-4 mt-2 text-white/80 flex flex-col space-y-2">
+
+    <Link
+      to="/program/full-stack"
+      onClick={() => setMobileOpen(false)}
+      className="block py-2"
+    >
+      Full Stack Developer Program
+    </Link>
+
+    <Link
+      to="/program/ai-foundations"
+      onClick={() => setMobileOpen(false)}
+      className="block py-2"
+    >
+      AI Foundations
+    </Link>
+
+    <Link
+      to="/program/data-science"
+      onClick={() => setMobileOpen(false)}
+      className="block py-2"
+    >
+      Data Science Starter
+    </Link>
+
+    <Link
+      to="/program/ui-ux"
+      onClick={() => setMobileOpen(false)}
+      className="block py-2"
+    >
+      UI/UX Design Essentials
+    </Link>
+
+  </div>
+</details>
+
 
             {/* CAREERS MOBILE */}
-            <details className="w-full">
-              <summary className="cursor-pointer py-2 flex justify-between items-center">
-                Careers <span>▼</span>
-              </summary>
-              <div className="pl-4 mt-2 space-y-2 text-white/80">
-                <p>Jobs</p>
-                <p>Internships</p>
-                <p>Webinars</p>
-                <p>Training</p>
-                <p>Workshops</p>
-              </div>
-            </details>
+            {/* CAREERS MOBILE */}
+{/* CAREERS MOBILE */}
+<details className="w-full">
+  <summary className="cursor-pointer py-2 flex justify-between items-center">
+    Careers <span>▼</span>
+  </summary>
+
+  <div className="pl-4 mt-2 space-y-2 text-white/80">
+
+    <Link
+      to="/careers/jobs"
+      onClick={() => setMobileOpen(false)}
+      className="block py-2 pr-4 rounded hover:bg-white/10 transition"
+    >
+      Jobs
+    </Link>
+
+    <Link
+      to="/careers/internships"
+      onClick={() => setMobileOpen(false)}
+      className="block py-2 pr-4 rounded hover:bg-white/10 transition"
+    >
+      Internships
+    </Link>
+
+    <Link
+      to="/careers/webinars"
+      onClick={() => setMobileOpen(false)}
+      className="block py-2 pr-4 rounded hover:bg-white/10 transition"
+    >
+      Webinars
+    </Link>
+
+    <Link
+      to="/careers/training"
+      onClick={() => setMobileOpen(false)}
+      className="block py-2 pr-4 rounded hover:bg-white/10 transition"
+    >
+      Training
+    </Link>
+
+    <Link
+      to="/careers/workshops"
+      onClick={() => setMobileOpen(false)}
+      className="block py-2 pr-4 rounded hover:bg-white/10 transition"
+    >
+      Workshops
+    </Link>
+
+  </div>
+</details>
+
+
 
             <Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link>
 
