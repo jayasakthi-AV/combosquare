@@ -8,24 +8,20 @@ import FAQ from "../components/home/FAQ";
 import FinalCTA from "../components/home/FinalCTA";
 import Footer from "../components/home/Footer";
 
-
-
-
-
+import FadeOnScroll from "../components/animation/FadeOnScroll";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <CareerTracks />
-      <ProgramSlider />
-      <StudentReview />
-      <WhyChooseUs />
-      <Achievement /> 
-      <FAQ />
-      <FinalCTA />
+      <FadeOnScroll><Hero /></FadeOnScroll>
+      <FadeOnScroll><CareerTracks /></FadeOnScroll>
+      <FadeOnScroll><ProgramSlider /></FadeOnScroll>
+      <FadeOnScroll><StudentReview /></FadeOnScroll>
+      <FadeOnScroll><WhyChooseUs /></FadeOnScroll>
+      <FadeOnScroll><Achievement /></FadeOnScroll>
+      <FadeOnScroll><FAQ /></FadeOnScroll>
+      <FadeOnScroll><FinalCTA /></FadeOnScroll>
       <Footer />
-
     </>
   );
 }

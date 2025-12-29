@@ -31,6 +31,8 @@ export default function App() {
           {/* DOMAINS */}
           <Route path="/domains/:domainId" element={<DomainPage />} />
 
+
+
           {/* ⭐ FIXED PROGRAM ROUTE */}
           <Route path="/program/:programId" element={<ProgramPage />} />
           <Route path="/careers/:careerId" element={<CareerPage />} />

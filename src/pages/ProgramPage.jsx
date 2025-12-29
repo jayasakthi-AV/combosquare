@@ -17,6 +17,8 @@ import {
   FileText,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+
 
 import Footer from "../components/home/Footer";
 
@@ -46,6 +48,8 @@ export default function ProgramPage() {
 
   const [openModule, setOpenModule] = useState(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -595,54 +599,118 @@ export default function ProgramPage() {
         </div>
       </motion.section>
 
-      {/* ⭐ PREMIUM FINAL CTA SECTION */}
-      <motion.section
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8 }}
-        className="relative py-24 px-6 overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-indigo-800 to-purple-700 opacity-95"></div>
-        <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-500/40 blur-[120px] rounded-full"></div>
-        <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-indigo-500/40 blur-[120px] rounded-full"></div>
+      {/* ================= UNIQUE PREMIUM FINAL CTA ================= */}
+<section className="relative py-32 overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#2b1055]">
 
-        <div className="relative max-w-4xl mx-auto text-center text-white">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="backdrop-blur-xl bg-white/10 border border-white/20 p-12 rounded-3xl shadow-2xl"
+{/* Ambient glow */}
+<div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-purple-600/30 blur-[180px] rounded-full" />
+<div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-600/30 blur-[180px] rounded-full" />
+
+<div className="relative max-w-7xl mx-auto px-6">
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className="grid md:grid-cols-2 gap-16 items-center"
+  >
+
+    {/* LEFT — CONTENT */}
+    <div className="text-white">
+      <p className="uppercase tracking-widest text-purple-300 text-sm font-semibold mb-4">
+        Career Transformation Program
+      </p>
+
+      <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">
+        Become job-ready with{" "}
+        <span className="text-purple-300">{program.title}</span>
+      </h2>
+
+      <p className="mt-6 text-lg text-purple-100 max-w-xl leading-relaxed">
+        This is not just a course. It’s a complete learning system designed to
+        help you master skills, build real-world projects, and confidently
+        step into the industry.
+      </p>
+
+      {/* Trust Pills */}
+      <div className="flex flex-wrap gap-4 mt-8">
+        {[
+          "Beginner Friendly",
+          "Hands-On Projects",
+          "Industry Aligned",
+          "Mentor Support",
+        ].map((tag, i) => (
+          <div
+            key={i}
+            className="px-5 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur text-sm font-semibold"
           >
-            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">
-              Start Your {program.title} Journey Today
-            </h2>
+            {tag}
+          </div>
+        ))}
+      </div>
 
-            <p className="text-purple-100 mt-4 text-lg max-w-2xl mx-auto leading-relaxed">
-              Level up your skills with expert-led training, real-world projects, and a structured career roadmap.
-            </p>
+      {/* CTA Buttons */}
+      <div className="mt-12 flex flex-wrap gap-6">
+      <motion.button
+  whileHover={{ scale: 1.08, y: -4 }}
+  whileTap={{ scale: 0.95 }}
+  transition={{ type: "spring", stiffness: 300 }}
+  onClick={() => navigate("/login")}
+  className="px-12 py-4 bg-white text-purple-800 font-bold text-lg rounded-full shadow-xl"
+>
+  Start Learning →
+</motion.button>
 
-            <div className="mt-10 flex flex-wrap justify-center gap-5">
-              <motion.button
-                whileHover={{ scale: 1.07, y: -4 }}
-                className="px-10 py-4 bg-white text-purple-800 font-bold text-lg rounded-full shadow-xl 
-                hover:bg-purple-100 transition flex items-center gap-2"
-              >
-                Enroll Now <ArrowRight className="w-5 h-5" />
-              </motion.button>
 
-              <motion.button
-                whileHover={{ scale: 1.07, y: -4 }}
-                className="px-10 py-4 border border-white/50 text-white font-semibold text-lg rounded-full
-                hover:bg-white/10 transition"
-              >
-                Download Brochure
-              </motion.button>
-            </div>
-          </motion.div>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          className="px-12 py-4 border border-white/40 text-white font-semibold text-lg rounded-full hover:bg-white/10 transition"
+        >
+          Download Curriculum
+        </motion.button>
+      </div>
+    </div>
+
+    {/* RIGHT — VALUE CARD */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.92 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="relative"
+    >
+      {/* Gradient frame */}
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-400 via-indigo-400 to-purple-600 blur-xl opacity-70" />
+
+      <div className="relative bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-10 shadow-2xl">
+        <h3 className="text-2xl font-bold text-white mb-6">
+          What you’ll achieve
+        </h3>
+
+        <ul className="space-y-4">
+          {[
+            "Strong fundamentals & advanced concepts",
+            "Portfolio-ready real-world projects",
+            "Confidence to crack interviews",
+            "Clear career roadmap",
+          ].map((item, i) => (
+            <li key={i} className="flex gap-3 text-purple-100">
+              <span className="mt-2 w-2 h-2 rounded-full bg-purple-300" />
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-8 text-sm text-purple-200">
+          ⭐ Trusted by students preparing for real industry roles
         </div>
-      </motion.section>
+      </div>
+    </motion.div>
+
+  </motion.div>
+</div>
+</section>
+
 
       <Footer />
     </div>

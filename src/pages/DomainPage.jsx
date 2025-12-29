@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import { domainData } from "../data/domainData.js";
-
-import { CheckCircle, Sparkles } from "lucide-react";
+import { domainData } from "../data/domainData";
+import { CheckCircle, Sparkles, ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import Footer from "../components/home/Footer";
+import { motion } from "framer-motion";
 
 export default function DomainPage() {
   const { domainId } = useParams();
@@ -17,260 +17,329 @@ export default function DomainPage() {
     );
   }
 
-  /* ---------------------- TYPING ANIMATION ---------------------- */
-  const [typedTitle, setTypedTitle] = useState("");
-  const fullTitle = domain.title;
+  /* ---------------- Scroll to Top ---------------- */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [domainId]);
 
+  /* ---------------- Typing Effect ---------------- */
+  const [typedTitle, setTypedTitle] = useState("");
   useEffect(() => {
     let i = 0;
     setTypedTitle("");
-
     const interval = setInterval(() => {
-      setTypedTitle(fullTitle.slice(0, i));
+      setTypedTitle(domain.title.slice(0, i));
       i++;
-      if (i > fullTitle.length) clearInterval(interval);
-    }, 120);
-
+      if (i > domain.title.length) clearInterval(interval);
+    }, 70);
     return () => clearInterval(interval);
   }, [domainId]);
 
-  /* ---------------------- SCROLL TO COURSES ---------------------- */
   const coursesRef = useRef(null);
-  const scrollToCourses = () => {
+  const scrollToCourses = () =>
     coursesRef.current?.scrollIntoView({ behavior: "smooth" });
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   return (
-    <div className="pt-24 bg-gray-50">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className="pt-24 bg-gray-50"
+    >
+      {/* ================= HERO ================= */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-900 to-indigo-700 text-white py-20">
+        <div className="absolute top-10 left-10 w-32 h-32 bg-purple-400/30 blur-3xl rounded-full" />
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-indigo-400/30 blur-3xl rounded-full" />
 
-      {/* ⚡ HERO SECTION */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-900 to-indigo-700 text-white py-16 sm:py-20 md:py-24">
-
-        {/* Glowing background */}
-        <div className="absolute top-10 left-10 w-16 sm:w-20 h-16 sm:h-20 bg-purple-300 opacity-30 rounded-full blur-3xl animate-[glow_6s_ease-in-out_infinite]" />
-        <div className="absolute bottom-10 right-10 w-20 sm:w-28 h-20 sm:h-28 bg-indigo-400 opacity-30 rounded-full blur-3xl animate-[glow_8s_ease-in-out_infinite]" />
-
-        <div className="max-w-7xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-10 sm:gap-12 items-center relative z-10">
-
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
           {/* LEFT */}
-          <div className="animate-[fadeUp_0.9s_ease-out]">
-
-            {/* Badge */}
+          <div>
             <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="text-yellow-300 w-5 h-5 sm:w-6 sm:h-6" />
-              <p className="uppercase tracking-wider text-purple-200 text-xs sm:text-sm font-semibold">
+              <Sparkles className="text-yellow-300" />
+              <p className="uppercase tracking-wider text-purple-200 text-sm font-semibold">
                 Premium Learning Track
               </p>
             </div>
 
-            {/* Title */}
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-2xl min-h-[60px] sm:min-h-[90px]">
+            <h1 className="text-4xl md:text-6xl font-extrabold min-h-[80px]">
               {typedTitle}
-              <span className="border-r-4 border-yellow-300 ml-1 animate-pulse" />
+              <span className="ml-1 border-r-4 border-yellow-300 animate-pulse" />
             </h1>
 
-            {/* Subtitle */}
-            <p className="mt-4 sm:mt-5 text-sm sm:text-lg text-purple-100 max-w-xl opacity-90 leading-relaxed">
+            <p className="mt-5 text-lg text-purple-100 max-w-xl">
               {domain.subtitle}
             </p>
 
-            {/* Highlights */}
-            <div className="grid grid-cols-1 gap-4 mt-8 sm:mt-10">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+              className="grid gap-4 mt-8"
+            >
               {domain.highlights.map((h, i) => (
-                <div
+                <motion.div
                   key={i}
-                  className="flex items-center gap-4 px-4 py-4 sm:px-5 sm:py-4 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg hover:bg-white/20 transition-all duration-300 animate-[fadeUp_1s_ease-out] opacity-0"
-                  style={{
-                    animationDelay: `${0.15 * i}s`,
-                    animationFillMode: "forwards",
-                  }}
+                  variants={fadeUp}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex gap-4 bg-white/10 border border-white/20 p-4 rounded-xl backdrop-blur-lg"
                 >
-                  <div className="bg-yellow-400/20 p-2 rounded-full">
-                    <CheckCircle className="text-yellow-300 w-5 h-5 sm:w-6 sm:h-6" />
-                  </div>
-                  <p className="text-purple-100 font-medium text-sm sm:text-lg">{h}</p>
-                </div>
+                  <CheckCircle className="text-yellow-300" />
+                  <p className="text-purple-100">{h}</p>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
+
+            <motion.button
+              whileHover={{ scale: 1.07, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              onClick={scrollToCourses}
+              className="mt-8 px-8 py-3 bg-white text-purple-700 font-bold rounded-full flex items-center gap-2 shadow-xl"
+            >
+              Explore Courses <ArrowRight />
+            </motion.button>
           </div>
 
-          {/* RIGHT IMAGE */}
-          <div className="flex justify-center md:justify-end animate-[fadeUp_1.2s_ease-out]">
-            <div className="relative p-[2px] sm:p-[3px] rounded-3xl bg-gradient-to-r from-purple-300 to-purple-500 shadow-2xl animate-[float_7s_ease-in-out_infinite]">
-              <div className="bg-white/10 backdrop-blur-2xl rounded-3xl p-3 sm:p-4 border border-white/20 shadow-xl">
+          {/* RIGHT */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="flex justify-center md:justify-end"
+          >
+            <div className="p-[3px] rounded-3xl bg-gradient-to-r from-purple-300 to-purple-500">
+              <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-4">
                 <img
                   src={domain.heroImg}
                   alt={domain.title}
-                  className="w-[220px] sm:w-[300px] md:w-[380px] rounded-2xl object-contain"
+                  className="max-w-[360px] rounded-2xl"
                 />
               </div>
             </div>
-          </div>
-
+          </motion.div>
         </div>
       </section>
+      {/* ================= COURSES ================= */}
+<section
+  ref={coursesRef}
+  className="max-w-7xl mx-auto px-6 py-20"
+>
+  <motion.h2
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+    className="text-4xl font-extrabold text-gray-900 mb-12"
+  >
+    Explore Courses with{" "}
+    <span className="text-purple-600">placement guidance</span>
+  </motion.h2>
 
-      {/* ⭐ STATS */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-          {domain.stats.map((s, i) => (
-            <div
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+    {domain.courses.map((c, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        whileHover={{ y: -10, scale: 1.03 }}
+        className="bg-white rounded-2xl shadow-xl overflow-hidden border hover:shadow-2xl transition-all"
+      >
+        {/* Thumbnail */}
+        <div className="relative">
+          <img
+            src={c.thumbnail}
+            alt={c.title}
+            className="h-48 w-full object-cover"
+          />
+          <span className="absolute top-4 left-4 bg-purple-700 text-white text-xs px-4 py-1 rounded-full shadow-md">
+            {c.level}
+          </span>
+        </div>
+
+        {/* Content */}
+        <div className="p-6">
+          <h3 className="text-xl font-semibold text-gray-900">
+            {c.title}
+          </h3>
+
+          <p className="text-gray-500 mt-2">
+            {c.duration}
+          </p>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-6 w-full py-3 bg-purple-600 text-white font-semibold rounded-xl shadow-md hover:bg-purple-900 transition"
+          >
+            Know More
+          </motion.button>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</section>
+
+
+      {/* ================= LEARNING PATH ================= */}
+      <section className="max-w-7xl mx-auto px-6 py-20">
+        <h2 className="text-4xl font-extrabold mb-12">Learning Journey</h2>
+
+        <div className="relative pl-10 border-l-4 border-purple-600 space-y-12">
+          {domain.learningPath.map((step, i) => (
+            <motion.div
               key={i}
-              className="bg-white shadow-xl rounded-2xl p-8 sm:p-10 text-center hover:-translate-y-1 hover:shadow-2xl transition border-t-4 border-purple-600"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="relative bg-white rounded-2xl p-6 shadow-xl"
             >
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-purple-700">{s.value}</h3>
-              <p className="text-gray-600 mt-2 sm:mt-3 text-base sm:text-lg">{s.label}</p>
-            </div>
+              <span className="absolute -left-10 top-6 w-10 h-10 bg-white border-2 border-purple-600 rounded-full flex items-center justify-center font-bold text-purple-700 shadow-md">
+                <span className="absolute inset-0 rounded-full bg-purple-500 opacity-30 blur-md animate-ping" />
+                {i + 1}
+              </span>
+              <p className="text-gray-700">{step}</p>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* ⭐ COURSES */}
-      <section ref={coursesRef} className="max-w-7xl mx-auto px-4 md:px-6 py-16 sm:py-20">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-8 sm:mb-10">
-          Explore Courses with <span className="text-purple-600">placements guidance</span>
+      {/* ================= TOOLS ================= */}
+      <section className="max-w-7xl mx-auto px-6 py-20">
+        <h2 className="text-4xl font-extrabold mb-12">
+          Tools You Will Use
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-          {domain.courses.map((c, index) => (
-            <div key={index} className="rounded-2xl shadow-xl overflow-hidden bg-white border hover:-translate-y-2 hover:shadow-2xl transition">
-              <div className="relative">
-                <img
-                  src={c.thumbnail}
-                  className="h-40 sm:h-48 w-full object-cover"
-                  alt={c.title}
-                />
-                <span className="absolute top-3 left-3 bg-purple-700 text-white text-xs px-3 py-1 rounded-full shadow">
-                  {c.level}
-                </span>
-              </div>
-
-              <div className="p-5 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-semibold">{c.title}</h3>
-                <p className="text-gray-500 mt-2 text-sm sm:text-base">{c.duration}</p>
-              </div>
-
-              <div className="px-5 sm:px-6 pb-6">
-                <button className="w-full py-3 bg-purple-600 text-white font-semibold rounded-xl hover:bg-purple-900 transition text-base sm:text-lg shadow-md hover:shadow-lg">
-                  Know More
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ⭐ LEARNING PATH */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 sm:py-20">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-10">Learning Path</h2>
-
-        <div className="relative border-l-4 border-purple-600 pl-5 sm:pl-8 space-y-10">
-          {domain.learningPath.map((step, i) => (
-            <div key={i} className="relative">
-              <div className="absolute -left-5 sm:-left-6 w-7 h-7 sm:w-8 sm:h-8 bg-purple-700 rounded-full flex items-center justify-center text-white shadow text-sm sm:text-base">
-                {i + 1}
-              </div>
-
-              <div className="bg-white p-5 sm:p-6 rounded-xl shadow hover:shadow-xl transition">
-                <p className="text-gray-700 text-sm sm:text-base font-medium">{step}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ⭐ TOOLS */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 sm:py-20">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-10">Tools You Will Learn</h2>
-
-        <div className="flex flex-wrap gap-3 sm:gap-5">
-          {domain.tools.map((t, i) => (
-            <div
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          {domain.tools.map((tool, i) => (
+            <motion.div
               key={i}
-              className="px-5 py-2 sm:px-6 sm:py-3 bg-white rounded-full shadow-md text-gray-800 font-semibold border hover:bg-purple-50 hover:text-purple-700 hover:shadow-xl transition text-sm sm:text-base"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              whileHover={{ y: -6, scale: 1.05 }}
+              className="bg-white rounded-xl shadow-md p-6 text-center font-semibold text-gray-800 hover:text-purple-700 transition"
             >
-              {t}
-            </div>
+              {tool}
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* ⭐ CONSULTATION FORM */}
-      <section className="w-full bg-gradient-to-b from-gray-100 to-gray-200 py-16 sm:py-20 px-4">
-        <div className="max-w-3xl mx-auto bg-white shadow-2xl rounded-3xl p-6 sm:p-10">
+     {/* ================= UNIQUE FINAL CTA ================= */}
+<section className="relative py-28 overflow-hidden bg-gradient-to-br from-[#2b1055] via-[#3a1c71] to-[#1e1b4b]">
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-center text-gray-900 mb-8">
-            Don’t Know Which Program to Choose?
-            <span className="text-purple-600"> Talk to Our Experts</span>
-          </h2>
+{/* Floating abstract shapes */}
+<div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-purple-500/30 blur-[140px]" />
+<div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-indigo-500/30 blur-[160px]" />
 
-          <form className="space-y-6">
-            {["Name", "Email", "Phone"].map((label, i) => (
-              <div key={i}>
-                <label className="block text-gray-700 font-medium mb-1">{label}*</label>
-                <input
-                  type="text"
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-purple-500"
-                  placeholder={`Enter your ${label.toLowerCase()}`}
-                />
-              </div>
-            ))}
+<div className="max-w-7xl mx-auto px-6 relative z-10">
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.7, ease: "easeOut" }}
+    className="grid md:grid-cols-2 gap-14 items-center"
+  >
 
-            {[
-              { label: "Educational Qualification*", options: ["10th", "12th", "Diploma", "UG", "PG"] },
-              { label: "Current Profile*", options: ["Student", "Working Professional", "Job Seeker"] },
-              { label: "Year of Graduation*", options: ["2025", "2024", "2023", "2022"] },
-              { label: "Language of Speaking*", options: ["English", "Tamil", "Hindi"] },
-            ].map((item, i) => (
-              <div key={i}>
-                <label className="block text-gray-700 font-medium mb-1">{item.label}</label>
-                <select className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-purple-500">
-                  <option>Select</option>
-                  {item.options.map((op, idx) => (
-                    <option key={idx}>{op}</option>
-                  ))}
-                </select>
-              </div>
-            ))}
+    {/* LEFT CONTENT */}
+    <div className="text-white">
+      <p className="uppercase tracking-widest text-purple-300 font-semibold text-sm mb-4">
+        Limited Seats Available
+      </p>
 
-            <button
-              type="submit"
-              className="w-full py-4 bg-purple-600 text-white text-lg font-bold rounded-xl shadow-lg hover:bg-purple-900 transition"
-            >
-              Apply Now
-            </button>
-          </form>
-        </div>
-      </section>
+      <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">
+        Build your future in{" "}
+        <span className="text-purple-300">{domain.title}</span>
+      </h2>
 
-      {/* ⭐ FINAL CTA */}
-      <section className="relative py-20 sm:py-24 overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
-        <div className="absolute top-16 left-16 w-40 sm:w-52 h-40 sm:h-52 bg-purple-400 opacity-20 blur-3xl rounded-full" />
-        <div className="absolute bottom-16 right-16 w-40 sm:w-52 h-40 sm:h-52 bg-indigo-400 opacity-20 blur-3xl rounded-full" />
+      <p className="mt-5 text-lg text-purple-100 max-w-xl leading-relaxed">
+        Learn with a structured roadmap, real-world projects, and expert mentorship.
+        Designed to take you from beginner to industry-ready — confidently.
+      </p>
 
-        <div className="max-w-5xl mx-auto px-4 md:px-6 relative z-10">
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 shadow-2xl rounded-3xl p-8 sm:p-14 text-center animate-[fadeUp_1s_ease-out]">
-
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white leading-snug drop-shadow-xl">
-              Start Your <span className="text-purple-300">{domain.title}</span> Journey Today
-            </h2>
-
-            <p className="text-purple-200 text-sm sm:text-lg mt-4 max-w-2xl mx-auto">
-              Learn premium industry skills, build real-world projects, and transform your future with expert guidance.
-            </p>
-
-            <button
-              onClick={scrollToCourses}
-              className="mt-8 sm:mt-10 px-10 sm:px-14 py-3 sm:py-4 text-lg font-bold rounded-full bg-white text-purple-700 shadow-lg hover:bg-purple-100 hover:scale-105 transition-all duration-300"
-            >
-              Explore Courses
-            </button>
-
+      {/* Trust indicators */}
+      <div className="flex flex-wrap gap-4 mt-8">
+        {[
+          "Beginner Friendly",
+          "Career-Oriented",
+          "Project Based",
+          "Mentor Support",
+        ].map((tag, i) => (
+          <div
+            key={i}
+            className="px-5 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur text-sm font-semibold"
+          >
+            {tag}
           </div>
+        ))}
+      </div>
+
+      <motion.button
+        whileHover={{ scale: 1.07, y: -4 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        onClick={scrollToCourses}
+        className="mt-10 px-12 py-4 bg-white text-purple-800 font-bold rounded-full shadow-xl"
+      >
+        Explore Courses →
+      </motion.button>
+    </div>
+
+    {/* RIGHT VISUAL CARD */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="relative"
+    >
+      {/* Gradient ring */}
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-400 via-indigo-400 to-purple-600 blur-xl opacity-60" />
+
+      <div className="relative bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-10 shadow-2xl">
+        <h3 className="text-2xl font-bold text-white mb-6">
+          What you’ll gain
+        </h3>
+
+        <ul className="space-y-4">
+          {[
+            "Clear learning roadmap",
+            "Hands-on real-world projects",
+            "Strong portfolio & resume",
+            "Career guidance & support",
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3 text-purple-100">
+              <span className="mt-1 w-2 h-2 rounded-full bg-purple-300" />
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-8 text-sm text-purple-200">
+          🚀 Designed for students & early professionals
         </div>
-      </section>
+      </div>
+    </motion.div>
+
+  </motion.div>
+</div>
+</section>
+
 
       <Footer />
-    </div>
+    </motion.div>
   );
 }
