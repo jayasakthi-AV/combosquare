@@ -72,12 +72,12 @@ export default function StudentReview() {
       <div className="max-w-7xl mx-auto px-6">
 
         {/* ⭐ Heading */}
-        <p className="text-center text-purple-500 font-bold text-sm tracking-wide mb-2">
+        <p className="text-center text-purple-700 font-bold text-1g tracking-wide mb-2 pt-8">
           STUDENT REVIEW
         </p>
 
-        <h2 className="text-center text-4xl font-bold text-gray-900 mb-10">
-          Hear from students <span className="text-purple-600">like you</span>
+        <h2 className="text-center text-3xl font-extrabold  mb-10">
+          Hear from students <span className="text-purple-600">like you!</span>
         </h2>
 
         {/* ⭐ Scroll Area Wrapper — THIS FIXES YOUR FADE ISSUE */}

@@ -97,11 +97,11 @@ export default function FAQ() {
     <section className="faq-bg w-full py-20 relative">
       <div className="relative z-10 max-w-6xl mx-auto px-6">
 
-        <h2 className="text-1xl font-bold text-purple-600 text-center">
+        <h2 className="text-1g font-bold text-purple-700 text-center">
           Frequently asked questions
         </h2>
 
-        <p className="text-grey-600 text-3xl mt-3 text-center font-bold mb-16">
+        <p className=" text-3xl mt-3 text-center font-extrabold mb-16">
           We’re here to help with all <span className="text-purple-600">your questions.</span>
         </p>
 

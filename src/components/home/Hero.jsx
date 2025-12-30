@@ -47,7 +47,7 @@ export default function Hero() {
     <>
       {/* 🌟 HERO SECTION */}
       <section className="w-full pt-20 md:pt-32 pb-4 md:pb-6 bg-gradient-to-br from-purple-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-14 flex items-stretch">
 
           {/* ⭐ LEFT SIDE CONTENT */}
           <div className="flex-1 space-y-4 md:space-y-6 order-2 md:order-1 text-center md:text-left">
@@ -112,9 +112,9 @@ export default function Hero() {
 
           </div>
 
-          {/* ⭐ RIGHT SIDE SLIDER */}
-          <div className="flex-1 flex justify-center items-center gap-3 h-[240px] sm:h-[300px] md:h-[350px] mt-4 md:mt-10 
-order-1 md:order-2 w-full">
+                    {/* ⭐ RIGHT SIDE SLIDER */}
+                    <div className="flex-1 flex justify-center items-center gap-3 
+          mt-4 md:mt-10 order-1 md:order-2 w-full">
 
             {sliderImages.map((item, i) => (
               <div
@@ -122,30 +122,37 @@ order-1 md:order-2 w-full">
                 onClick={() => setActive(i)}
                 className={`relative cursor-pointer rounded-2xl overflow-hidden shadow-lg transition-all duration-700 
                   ${active === i ? "flex-[4]" : "flex-[1.2]"} 
-                  h-full bg-white`}
+                  h-[520px] md:h-[600px] lg:h-[500px] bg-white`}
               >
-                <img src={item.img} className="w-full h-full object-cover" />
+                <img src={item.img} className="w-full h-full object-cover" alt="" />
 
                 <div
                   className={`absolute bottom-3 left-3 text-white text-xs sm:text-sm transition-all duration-500 ${
                     active === i ? "opacity-100" : "opacity-0"
                   }`}
                 >
-                  <h3 className="text-base sm:text-lg font-bold drop-shadow-xl">{item.title}</h3>
-                  <p className="text-xs sm:text-sm drop-shadow-lg">{item.desc}</p>
+                  <h3 className="text-base sm:text-lg font-bold drop-shadow-xl">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm drop-shadow-lg">
+                    {item.desc}
+                  </p>
                 </div>
               </div>
             ))}
-
           </div>
+
         </div>
-      </section>
+      </section>   {/* ✅ THIS WAS MISSING */}
+
+
+
 
       {/* ⭐ TOP COMPANIES BELOW HERO */}
       <div className="w-full bg-white pt-8 ">
         <div className="max-w-7xl mx-auto px-6 text-center">
 
-          <p className="text-gray-900 font-extrabold text-2xl mb-4">
+          <p className="text-gray-900 font-extrabold text-3xl mb-4">
             Where Do Our Learners Work?
           </p>
 

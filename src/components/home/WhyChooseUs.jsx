@@ -22,12 +22,13 @@ export default function WhyChooseUs() {
 
           {/* Heading */}
           <div className="text-center mb-10 md:mb-14">
-            <h2 className="font-bold text-sm md:text-lg text-purple-600 mb-2 md:mb-3">
+            <h2 className="font-bold text-sm md:text-lg text-purple-700 mb-2 md:mb-3">
               Why Choose Us
             </h2>
-            <p className="text-black text-2xl md:text-4xl max-w-xl mx-auto font-bold leading-tight">
-              <span className="text-purple-600">Trusted</span> by learners,
-              <span className="text-purple-600"> Loved</span> by recruiters.
+            <p className="text-black text-3xl md:text-4xl max-w-xl mx-auto font-extrabold leading-tight 
+            md:whitespace-nowrap text-center">
+
+              <span className="text-purple-600">Trusted</span> by learners, <span className="text-purple-600"> Loved</span> by recruiters.
             </p>
           </div>
 
@@ -35,32 +36,60 @@ export default function WhyChooseUs() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
             {features.map((item, index) => (
               <div
-                key={index}
-                className="
-                  bg-white/90 backdrop-blur-lg p-6 md:p-8 rounded-2xl border border-gray-200 shadow-lg
-                  transition-all duration-300 cursor-pointer
-                  hover:-translate-y-2 hover:shadow-2xl hover:border-purple-300
-                "
-              >
+              key={index}
+              className="
+                group relative
+                bg-white/90 backdrop-blur-lg
+                p-6 md:p-8 rounded-2xl
+                border border-gray-200
+                shadow-md
+                transition-all duration-500 ease-out
+                cursor-pointer
+                hover:-translate-y-1.5
+                hover:shadow-[0_20px_40px_-10px_rgba(128,90,213,0.45)]
+                hover:border-purple-800
+                hover:bg-gradient-to-br hover:from-purple-800 hover:to-indigo-900
+              "
+            >
+            
+            
                 {/* Icon Circle */}
                 <div
-                  className="
-                    w-12 h-12 md:w-16 md:h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4 md:mb-5 shadow-sm
-                    transition-all duration-300
-                  "
-                >
-                  {item.icon}
-                </div>
+  className="
+    w-12 h-12 md:w-16 md:h-16 rounded-full
+    bg-purple-100 flex items-center justify-center
+    mb-4 md:mb-5
+    transition-all duration-500
+    group-hover:bg-white
+    group-hover:scale-105
+  "
+>
+  {item.icon}
+</div>
+
+
 
                 {/* Title */}
-                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-1 md:mb-2">
-                  {item.title}
-                </h3>
+                <h3 className="
+  text-lg md:text-xl font-semibold
+  text-gray-900 mb-1 md:mb-2
+  transition-colors duration-500
+  group-hover:text-white
+">
+  {item.title}
+</h3>
+
+
 
                 {/* Description */}
-                <p className="text-gray-600 text-sm md:text-base">
-                  {item.desc}
-                </p>
+                <p className="
+  text-gray-600 text-sm md:text-base
+  transition-colors duration-500
+  group-hover:text-purple-100
+">
+  {item.desc}
+</p>
+
               </div>
             ))}
           </div>
@@ -68,7 +97,7 @@ export default function WhyChooseUs() {
           {/* Bottom Bar */}
           <div className="mt-12 md:mt-16 text-center text-gray-800 text-base md:text-lg font-medium">
             Trusted by learners from{" "}
-            <span className="text-purple-700 font-bold">Top Companies</span>
+            <span className="text-purple-700 font-bold">Top Companies!!</span>
           </div>
 
         </div>

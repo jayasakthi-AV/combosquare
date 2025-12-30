@@ -48,14 +48,14 @@ export default function ProgramSlider() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
 
         {/* ⭐ Heading */}
-        <h3 className="text-purple-600 font-bold text-sm sm:text-lg tracking-wide">
+        <h3 className="text-purple-700  text-center font-bold text-sm sm:text-lg tracking-wide">
           OUR PROGRAM
         </h3>
 
-        <p className="text-2xl sm:text-3xl font-extrabold leading-snug text-gray-900 mb-8 sm:mb-10">
+        <p className="text-3xl sm:text-3xl font-extrabold leading-snug text-center mb-8 sm:mb-10">
           Discover Our Premier,{" "}
-          <span className="text-purple-600">Top-Rated</span> <br className="hidden sm:block" />
-          Learning Program
+          <span className="text-purple-600"> Top-Rated </span> 
+           Learning Program.
         </p>
 
         {/* ⭐ Left Button (Desktop Only) */}

@@ -35,15 +35,15 @@ export default function CareerTracks() {
 
   return (
     <div className="w-full py-14 bg-gradient-to-b from-white to-purple-50/20 ">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 ">
 
         {/* ⭐Heading */}
-        <h2 className="text-lg font-bold text-purple-700 tracking-wide">
+        <h2 className="text-lg font-bold text-purple-700 tracking-wide text-center  pt-8">
           DOMAINS WE OFFER
         </h2>
 
-        <p className="mt-1 mb-12 text-3xl font-extrabold text-gray-900 leading-snug">
-          Your roadmap to a <span className="text-purple-600">high-paid tech career</span>
+        <p className="mt-1 mb-12 text-3xl font-extrabold text-center leading-snug">
+          Your roadmap to a <span className="text-purple-600">high-paid tech career.</span>
         </p>
 
         {/* ⭐ Cards */}

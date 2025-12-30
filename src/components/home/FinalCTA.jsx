@@ -21,37 +21,59 @@ export default function FinalCTA() {
               </h2>
               <p className="text-sm md:text-base text-purple-100/90">
                 Simple explanations, guided lessons, and practical experience designed
-                for real understanding — not just course completion. Start with clarity,
+                for real understanding not just course completion. Start with clarity,
                 stay with confidence, and grow with support.
               </p>
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full md:w-auto">
+            <div className="flex flex-col gap-4 w-full sm:w-auto">
 
-              {/* Navigate to /Domain */}
-              <button
-                onClick={() => navigate("/Domain")}
-                className="inline-flex items-center justify-center w-full sm:w-auto px-5 md:px-7 py-3 md:py-3.5
-                           rounded-full bg-white text-purple-700 font-semibold text-sm md:text-base
-                           shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-transform duration-200"
-              >
-                Take Your First Lesson
-                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
-              </button>
+  {/* Primary CTA */}
+  <button
+    onClick={() => navigate("/Domain")}
+    className="
+      inline-flex items-center justify-center
+      w-full
+      px-6 md:px-7 py-3 md:py-3.5
+      rounded-xl
+      bg-white text-purple-700
+      font-semibold text-sm md:text-base
+      shadow-md
+      whitespace-nowrap
+      transition-all duration-300
+      hover:shadow-lg
+      hover:-translate-y-[1px]
+    "
+  >
+    Take Your First Lesson
+    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
+  </button>
 
-              {/* Navigate to /contact */}
-              <button
-                onClick={() => navigate("/contact")}
-                className="inline-flex items-center justify-center w-full sm:w-auto px-5 md:px-7 py-3 md:py-3.5
-                           rounded-full border border-purple-200/60 text-purple-50 font-medium text-sm md:text-base
-                           bg-white/5 hover:bg-white/10 transition-colors duration-200"
-              >
-                <MessageCircle className="w-4 h-4 md:w-5 md:h-5 mr-2" />
-                Talk to a Mentor
-              </button>
+  {/* Secondary CTA */}
+  <button
+    onClick={() => navigate("/contact")}
+    className="
+      inline-flex items-center justify-center
+      w-full
+      px-6 md:px-7 py-3 md:py-3.5
+      rounded-xl
+      border border-white/30
+      text-white
+      font-medium text-sm md:text-base
+      bg-white/10
+      whitespace-nowrap
+      transition-all duration-300
+      hover:bg-white/20
+    "
+  >
+    <MessageCircle className="w-4 h-4 md:w-5 md:h-5 mr-2" />
+    Talk to a Mentor
+  </button>
 
-            </div>
+</div>
+
+
           </div>
 
           {/* Bottom trust line */}
