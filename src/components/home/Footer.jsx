@@ -6,11 +6,14 @@ export default function Footer() {
     <footer className="w-full bg-[#0F0A21] text-gray-300 overflow-hidden">
 
       {/* BRAND STRIP */}
-<div className="relative w-full h-[90px] sm:h-[140px] md:h-[220px] flex items-center justify-center overflow-hidden">
+      <div className="relative w-full h-[90px] sm:h-[140px] md:h-[220px] 
+                flex items-center justify-center overflow-hidden px-3 sm:px-6">
+
   <h1
     className="
       flex items-center justify-center
-      text-[13vw] sm:text-[11vw] md:text-[9vw]
+      text-[11.5vw] sm:text-[10.5vw] md:text-[9vw]
+
       font-extrabold
       tracking-[0em] sm:tracking-[0.0em] md:tracking-[0.15em]
       text-white/10
