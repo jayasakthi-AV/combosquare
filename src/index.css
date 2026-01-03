@@ -133,3 +133,42 @@ details[open] .arrow-icon {
   100% { opacity: 0; transform: translateX(150px); }
 }
 
+@keyframes gridFlow {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.28;
+  }
+  50% {
+    transform: translate(80px, 80px);
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate(160px, 160px);
+    opacity: 0.28;
+  }
+}
+
+.animate-gridFlow {
+  animation: gridFlow 40s linear infinite;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-gridFlow {
+    animation: none;
+  }
+}
+
+
+
+.animate-gridMove {
+  animation: gridMove 14s ease-in-out infinite;
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-gridMove {
+    animation: none;
+  }
+}
+

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
 
 import user1 from "../../assets/user1.png";
 import user2 from "../../assets/user2.png";
@@ -46,8 +48,28 @@ export default function Hero() {
   return (
     <>
       {/* 🌟 HERO SECTION */}
-      <section className="w-full pt-20 md:pt-32 pb-4 md:pb-6 bg-gradient-to-br from-purple-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-14 flex items-stretch">
+      <section className="relative w-full pt-20 md:pt-32 pb-4 md:pb-6 bg-gradient-to-br from-purple-50 to-white overflow-hidden">
+        {/* 🔲 Animated Grid Background */}
+{/* 🔲 EMC-STYLE FLOWING GRID BACKGROUND */}
+<div className="absolute inset-0 overflow-hidden pointer-events-none">
+  <div className="absolute -top-40 -left-40 w-[1400px] h-[1400px] animate-gridFlow">
+    <div className="grid grid-cols-10 gap-px">
+      {Array.from({ length: 100 }).map((_, i) => (
+        <span
+          key={i}
+          className={`aspect-square border border-purple-200/40
+            ${i % 8 === 0 || i % 13 === 0 ? "bg-purple-300/25" : "bg-transparent"}`}
+          
+        />
+      ))}
+    </div>
+  </div>
+</div>
+
+
+
+<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-14">
+
 
           {/* ⭐ LEFT SIDE CONTENT */}
           <div className="flex-1 space-y-4 md:space-y-6 order-2 md:order-1 text-center md:text-left">
@@ -112,38 +134,41 @@ export default function Hero() {
 
           </div>
 
-                    {/* ⭐ RIGHT SIDE SLIDER */}
-                    <div className="flex-1 flex justify-center items-center gap-3 
-          mt-4 md:mt-10 order-1 md:order-2 w-full">
+                  {/* ⭐ RIGHT SIDE */}
+<div className="flex-1 flex justify-center items-center mt-4 md:mt-10 order-1 md:order-2 w-full">
 
-            {sliderImages.map((item, i) => (
-              <div
-                key={i}
-                onClick={() => setActive(i)}
-                className={`relative cursor-pointer rounded-2xl overflow-hidden shadow-lg transition-all duration-700 
-                  ${active === i ? "flex-[4]" : "flex-[1.2]"} 
-                  h-[520px] md:h-[600px] lg:h-[500px] bg-white`}
-              >
-                <img src={item.img} className="w-full h-full object-cover" alt="" />
+{/* 🖥 DESKTOP SLIDER */}
+<div className="hidden md:flex justify-center items-center gap-3 w-full">
+  {sliderImages.map((item, i) => (
+    <div
+      key={i}
+      onClick={() => setActive(i)}
+      className={`relative cursor-pointer rounded-2xl overflow-hidden shadow-lg transition-all duration-700 
+        ${active === i ? "flex-[4]" : "flex-[1.2]"} 
+        h-[520px] md:h-[600px] lg:h-[500px] bg-white`}
+    >
+      <img src={item.img} className="w-full h-full object-cover" alt="" />
 
-                <div
-                  className={`absolute bottom-3 left-3 text-white text-xs sm:text-sm transition-all duration-500 ${
-                    active === i ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  <h3 className="text-base sm:text-lg font-bold drop-shadow-xl">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm drop-shadow-lg">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div
+        className={`absolute bottom-3 left-3 text-white transition-all duration-500 ${
+          active === i ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <h3 className="text-lg font-bold drop-shadow-xl">
+          {item.title}
+        </h3>
+        <p className="text-sm drop-shadow-lg">
+          {item.desc}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
 
-        </div>
-      </section>   {/* ✅ THIS WAS MISSING */}
+</div>
+</div>   {/* closes max-w-7xl */}
+      </section> {/* closes HERO SECTION */}
+
 
 
 
