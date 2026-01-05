@@ -82,7 +82,7 @@ export default function Hero() {
             </p>
 
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight text-gray-900">
-              Become a <span className="text-purple-600">Software Developer</span> in 2025
+              Become a <span className="text-purple-600">Software Developer</span> in 2026
             </h1>
 
             <p className="text-lg sm:text-xl text-gray-700 font-medium">
@@ -166,12 +166,13 @@ export default function Hero() {
             Where Do Our Learners Work?
           </p>
 
-          <div className="flex justify-center gap-6 flex-wrap opacity-90">
-            <img src={amazon} className="h-8" />
-            <img src={zoho} className="h-7" />
-            <img src={tcs} className="h-7" />
-            <img src={infosys} className="h-7" />
-          </div>
+          <div className="flex justify-center gap-8 flex-wrap opacity-90">
+  <img src={amazon} alt="Amazon" className="h-16 md:h-20 lg:h-24 w-auto" />
+  <img src={zoho} alt="Zoho" className="h-16 md:h-20 lg:h-24 w-auto" />
+  <img src={tcs} alt="TCS" className="h-16 md:h-20 lg:h-24 w-auto" />
+  <img src={infosys} alt="Infosys" className="h-16 md:h-20 lg:h-24 w-auto" />
+</div>
+
         </div>
       </div>
     </>

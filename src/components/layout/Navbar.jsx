@@ -22,8 +22,7 @@ export default function Navbar() {
             className="relative group cursor-pointer px-3 py-1 rounded-full hover:bg-white hover:text-purple-700 transition-colors"
           >
             Home
-            <span className="absolute left-0 -bottom-1 w-0 h-[3px] bg-cyan-300 
-              transition-all duration-300 group-hover:w-full" />
+            
           </Link>
 
           {/* DOMAINS DROPDOWN */}
@@ -35,7 +34,7 @@ export default function Navbar() {
             <button className="relative px-3 py-1 rounded-full flex items-center gap-1 hover:bg-white hover:text-purple-700 transition-colors">
               Domains
               <span className="text-xs">{dropdownOpen === "domains" ? "▲" : "▼"}</span>
-              <span className="absolute left-0 -bottom-1 w-0 h-[3px] bg-cyan-300 transition-all duration-300 group-hover:w-full" />
+              
             </button>
 
             <div className="absolute left-0 top-full h-4 w-full"></div>
@@ -69,7 +68,7 @@ export default function Navbar() {
             <button className="relative px-3 py-1 rounded-full flex items-center gap-1 hover:bg-white hover:text-purple-700 transition-colors">
               Programs
               <span className="text-xs">{dropdownOpen === "programs" ? "▲" : "▼"}</span>
-              <span className="absolute left-0 -bottom-1 w-0 h-[3px] bg-cyan-300 transition-all duration-300 group-hover:w-full" />
+              
             </button>
 
             <div className="absolute left-0 top-full h-4 w-full"></div>
@@ -106,7 +105,7 @@ export default function Navbar() {
   <button className="relative px-3 py-1 rounded-full flex items-center gap-1 hover:bg-white hover:text-purple-700 transition-colors">
     Careers
     <span className="text-xs">{dropdownOpen === "careers" ? "▲" : "▼"}</span>
-    <span className="absolute left-0 -bottom-1 w-0 h-[3px] bg-cyan-300 transition-all duration-300 group-hover:w-full" />
+    
   </button>
 
   <div className="absolute left-0 top-full h-4 w-full"></div>
@@ -140,8 +139,7 @@ export default function Navbar() {
             className="relative group px-3 py-1 rounded-full hover:bg-white hover:text-purple-700 transition-colors"
           >
             Contact
-            <span className="absolute left-0 -bottom-1 w-0 h-[3px] bg-cyan-300 
-              transition-all duration-300 group-hover:w-full" />
+            
           </Link>
         </div>
 
