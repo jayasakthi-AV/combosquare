@@ -1,4 +1,4 @@
-// src/pages/CareerPage.jsx
+
 import { useParams } from "react-router-dom";
 import { careerData } from "../data/careerData";
 import { useEffect } from "react";
@@ -19,7 +19,7 @@ const careerToDomainMap = {
   jobs: "technology",
   internships: "technology",
   webinars: "technology",
-  // add more mappings if needed
+  
 };
 
 
@@ -60,14 +60,13 @@ export default function CareerPage() {
       className="pt-24 bg-gray-50"
     
     >
-      {/* ================= HERO ================= */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#2b1055] text-white py-24">
-        {/* ambient glow */}
+       
         <div className="absolute -top-20 -left-20 w-96 h-96 bg-purple-500/30 blur-[160px] rounded-full" />
         <div className="absolute bottom-0 right-0 w-[420px] h-[420px] bg-indigo-500/30 blur-[180px] rounded-full" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-14 items-center">
-          {/* LEFT */}
+          
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/10 border border-white/20 mb-5">
               <Sparkles className="w-4 h-4 text-yellow-300" />
@@ -91,7 +90,7 @@ export default function CareerPage() {
 </div>
 
 
-            {/* Micro stats */}
+          
             <div className="mt-8 grid grid-cols-3 gap-4 max-w-md">
               {[
                 { label: "Opportunities", icon: Briefcase },
@@ -111,7 +110,7 @@ export default function CareerPage() {
             </div>
           </div>
 
-          {/* RIGHT – GLASS CARD */}
+          
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -139,7 +138,7 @@ export default function CareerPage() {
           </motion.div>
         </div>
       </section>
-      {/* ================= CAREER READINESS ================= */}
+      
 <section className="max-w-7xl mx-auto px-6 py-16">
   <div className="bg-white rounded-3xl shadow-xl p-8 grid md:grid-cols-3 gap-8 items-center">
     
@@ -170,7 +169,7 @@ export default function CareerPage() {
 </section>
 
 
-      {/* ================= WHY THIS CAREER ================= */}
+      
       <section className="max-w-7xl mx-auto px-6 py-20">
         <motion.h2
           variants={fadeUp}
@@ -201,7 +200,7 @@ export default function CareerPage() {
           ))}
         </div>
       </section>
-      {/* ================= CAREER ROADMAP ================= */}
+      
 <section className="max-w-7xl mx-auto px-6 py-20">
   <h2 className="text-3xl font-extrabold mb-10">
     Career Roadmap
@@ -230,7 +229,7 @@ export default function CareerPage() {
 </section>
 
 
-      {/* ================= OPPORTUNITIES ================= */}
+      
       <section className="max-w-7xl mx-auto px-6 pb-24">
         <motion.h2
           variants={fadeUp}
@@ -286,16 +285,16 @@ export default function CareerPage() {
 </section>
 
 
-  {/* ================= CAREER DECISION CTA ================= */}
+  
 <section className="relative py-28 bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 overflow-hidden">
 
-{/* soft ambient glow */}
+
 <div className="absolute -top-32 -left-32 w-[420px] h-[420px] bg-purple-600/30 blur-[180px] rounded-full" />
 <div className="absolute -bottom-32 -right-32 w-[420px] h-[420px] bg-indigo-600/30 blur-[180px] rounded-full" />
 
 <div className="relative max-w-7xl mx-auto px-6 text-white">
 
-  {/* Header */}
+  
   <div className="text-center max-w-3xl mx-auto mb-16">
     <p className="uppercase tracking-widest text-purple-300 text-sm font-semibold mb-3">
       Career Decision Point
@@ -309,10 +308,10 @@ export default function CareerPage() {
     </p>
   </div>
 
-  {/* Decision Cards */}
+  
   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-    {/* Card 1 */}
+    
     <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition">
       <h3 className="text-xl font-bold mb-3">I’m Ready to Apply</h3>
       <p className="text-purple-100 text-sm leading-relaxed mb-6">
@@ -324,7 +323,7 @@ export default function CareerPage() {
       </button>
     </div>
 
-    {/* Card 2 – Highlighted */}
+    
     <div className="relative bg-gradient-to-br from-purple-600 to-indigo-600 rounded-3xl p-[2px] shadow-2xl scale-[1.03]">
       <div className="bg-slate-900 rounded-3xl p-8 h-full">
         <p className="text-xs uppercase tracking-widest text-purple-300 mb-2">
@@ -349,7 +348,7 @@ export default function CareerPage() {
       </div>
     </div>
 
-    {/* Card 3 */}
+   
     <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition">
       <h3 className="text-xl font-bold mb-3">I’m Just Exploring</h3>
       <p className="text-purple-100 text-sm leading-relaxed mb-6">
@@ -367,7 +366,7 @@ export default function CareerPage() {
 
   </div>
 
-  {/* Footer note */}
+  
   <p className="text-center text-sm text-purple-200 mt-14">
     💡 Career decisions don’t have to be rushed — clarity comes first.
   </p>

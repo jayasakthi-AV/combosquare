@@ -1,25 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import heroImg from "../assets/login-hero.png"; // replace with your custom image
+import heroImg from "../assets/login-hero.png"; 
 
 export default function Login() {
   return (
     <div className="w-full min-h-screen flex bg-white">
 
-      {/* LEFT SIDE WITH TEXT ON TOP OF ILLUSTRATION */}
+      
 <div className="hidden lg:flex w-1/2 relative">
 
-{/* BACKGROUND IMAGE */}
+
 <img
   src={heroImg}
   alt="Hero"
   className="absolute inset-0 w-full h-full object-cover opacity-90"
 />
 
-{/* DARK OVERLAY FOR READABILITY */}
+
 <div className="absolute inset-0 bg-gradient-to-b from-purple-800/80 to-purple-900/80"></div>
 
-{/* CONTENT ON TOP OF IMAGE */}
+
 <div className="relative z-10 p-12 text-white w-full max-w-lg pt-24">
 
 
@@ -32,8 +32,6 @@ export default function Login() {
     ComboSquare helps you become a job-ready developer with mentorship, 
     real-world projects, and interview preparation.
   </p>
-
-  {/* Feature Pills */}
   <div className="space-y-3 mt-6">
     <div className="bg-white/10 px-5 py-3 rounded-full backdrop-blur-md border border-white/20">
       ✔ 1:1 Mentorship
@@ -56,7 +54,7 @@ export default function Login() {
 </div>
 
 
-      {/* RIGHT SIDE */}
+   
       <div className="w-full lg:w-1/2 flex items-center justify-center px-6 py-10">
         <div className="w-full max-w-md">
 
@@ -68,7 +66,7 @@ export default function Login() {
             </Link>
           </p>
 
-          {/* GOOGLE LOGIN */}
+ 
           <button className="w-full mt-6 py-3 border rounded-lg flex items-center justify-center gap-3 hover:bg-gray-50 transition">
             <img
               src="https://www.svgrepo.com/show/475656/google-color.svg"
@@ -84,7 +82,6 @@ export default function Login() {
             <div className="flex-1 h-px bg-gray-300"></div>
           </div>
 
-          {/* EMAIL LOGIN FORM */}
           <form className="space-y-5">
             <div>
               <label className="text-sm font-medium text-gray-700">Email Address</label>

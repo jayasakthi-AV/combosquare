@@ -17,12 +17,12 @@ export default function DomainPage() {
     );
   }
 
-  /* ---------------- Scroll to Top ---------------- */
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [domainId]);
 
-  /* ---------------- Typing Effect ---------------- */
+  
   const [typedTitle, setTypedTitle] = useState("");
   useEffect(() => {
     let i = 0;
@@ -55,13 +55,12 @@ export default function DomainPage() {
       transition={{ duration: 0.6 }}
       className="pt-20 md:pt-24 bg-gray-50"
     >
-      {/* ================= HERO ================= */}
+      
       <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-900 to-indigo-700 text-white py-14 md:py-20">
         <div className="absolute top-10 left-10 w-32 h-32 bg-purple-400/30 blur-3xl rounded-full" />
         <div className="absolute bottom-10 right-10 w-40 h-40 bg-indigo-400/30 blur-3xl rounded-full" />
 
         <div className="max-w-7xl mx-auto px-5 md:px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
-          {/* LEFT */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="text-yellow-300" />
@@ -109,7 +108,7 @@ export default function DomainPage() {
             </motion.button>
           </div>
 
-          {/* RIGHT */}
+         
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -129,7 +128,7 @@ export default function DomainPage() {
         </div>
       </section>
 
-      {/* ================= COURSES ================= */}
+ 
       <section
         ref={coursesRef}
         className="max-w-7xl mx-auto px-5 md:px-6 py-16 md:py-20"
@@ -187,7 +186,7 @@ export default function DomainPage() {
         </div>
       </section>
 
-      {/* ================= LEARNING PATH ================= */}
+     
       <section className="max-w-7xl mx-auto px-5 md:px-6 py-16 md:py-20">
         <h2 className="text-3xl md:text-4xl font-extrabold mb-10 md:mb-12">
           Learning Journey
@@ -212,7 +211,7 @@ export default function DomainPage() {
         </div>
       </section>
 
-      {/* ================= TOOLS ================= */}
+      
       <section className="max-w-7xl mx-auto px-5 md:px-6 py-16 md:py-20">
         <h2 className="text-3xl md:text-4xl font-extrabold mb-10 md:mb-12">
           Tools You Will Use
@@ -235,7 +234,6 @@ export default function DomainPage() {
         </div>
       </section>
 
-      {/* ================= FINAL CTA ================= */}
       <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-[#2b1055] via-[#3a1c71] to-[#1e1b4b]">
         <div className="max-w-7xl mx-auto px-5 md:px-6 relative z-10 text-white">
           <motion.div

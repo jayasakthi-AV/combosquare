@@ -3,7 +3,7 @@ export const programData = {
     id: "full-stack",
     title: "Full Stack Developer Program",
     subtitle: "Master frontend + backend with real-world projects and industry mentorship.",
-    heroImg: "/images/hero/web.png",   // ✅ FIXED
+    heroImg: "/images/hero/web.png",   
 
     highlights: [
       "6-Month Guided Learning",
@@ -29,7 +29,7 @@ export const programData = {
     id: "ai-foundations",
     title: "AI Foundations",
     subtitle: "Learn the fundamentals of Artificial Intelligence and Machine Learning.",
-    heroImg: "/images/hero/ai.png",   // ✅ FIXED
+    heroImg: "/images/hero/ai.png",  
 
     highlights: [
       "Beginner Friendly",
@@ -55,7 +55,7 @@ export const programData = {
     id: "data-science",
     title: "Data Science Starter",
     subtitle: "Build strong foundations in data analytics, visualization and ML basics.",
-    heroImg: "/images/hero/data.png",   // ✅ FIXED
+    heroImg: "/images/hero/data.png",   
 
     highlights: [
       "Hands-on Data Projects",
@@ -81,7 +81,7 @@ export const programData = {
     id: "ui-ux",
     title: "UI/UX Design Essentials",
     subtitle: "Learn design thinking, wireframing, prototyping and brand design.",
-    heroImg: "/images/hero/ui.png",   // ✅ FIXED
+    heroImg: "/images/hero/ui.png",   
 
     highlights: [
       "Figma Mastery",

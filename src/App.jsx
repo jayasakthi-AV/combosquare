@@ -25,25 +25,25 @@ export default function App() {
       <div className={noPaddingPages.includes(location.pathname) ? "" : "pt-24 px-6"}>
         <Routes>
 
-          {/* HOME */}
+          
           <Route path="/" element={<Home />} />
 
-          {/* DOMAINS */}
+         
           <Route path="/domains/:domainId" element={<DomainPage />} />
 
 
 
-          {/* ⭐ FIXED PROGRAM ROUTE */}
+          
           <Route path="/program/:programId" element={<ProgramPage />} />
           <Route path="/careers/:careerId" element={<CareerPage />} />
 
 
-          {/* STATIC PAGES */}
+          
           <Route path="/programs" element={<Programs />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
 
-          {/* AUTH */}
+        
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
 

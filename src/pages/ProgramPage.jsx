@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 
 import Footer from "../components/home/Footer";
 
-// 🔹 Typing Animation Hook
+
 function useTypingEffect(text, speed = 50) {
   const [displayedText, setDisplayedText] = useState("");
 
@@ -63,7 +63,7 @@ export default function ProgramPage() {
     );
   }
 
-  // ⭐ Learning Journey Data
+  
   const learningJourney = [
     {
       label: "Step 1",
@@ -109,7 +109,7 @@ export default function ProgramPage() {
     },
   ];
 
-  // Auto-slide testimonials
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveTestimonial(
@@ -125,18 +125,17 @@ export default function ProgramPage() {
   return (
     <div className="pt-24 bg-gray-50 min-h-screen flex flex-col">
 
-      {/* ⚡ HERO SECTION */}
       <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-900 to-indigo-700 
       text-white py-14 sm:py-20 md:py-24"> 
-      {/* 🔥 FIX #2 (smaller mobile padding) */}
+      
 
-        {/* Floating Blobs */}
+     
         <div className="absolute top-10 left-10 w-24 h-24 bg-purple-400 opacity-30 rounded-full blur-3xl animate-[glow_6s_infinite]" />
         <div className="absolute bottom-14 right-14 w-32 h-32 bg-indigo-400 opacity-30 rounded-full blur-3xl animate-[glow_8s_infinite]" />
 
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 relative z-10 items-center">
 
-          {/* LEFT SECTION */}
+          
           <div className="animate-[fadeUp_0.9s_ease-out]">
 
             <div className="flex items-center gap-2 mb-4">
@@ -146,7 +145,7 @@ export default function ProgramPage() {
               </p>
             </div>
 
-            {/* Typing Title */}
+           
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-2xl flex min-h-[70px]">
               {typedTitle}
               <span className="ml-1 border-r-4 border-yellow-300 animate-pulse" />
@@ -156,7 +155,7 @@ export default function ProgramPage() {
               {program.subtitle}
             </p>
 
-            {/* Highlights */}
+          
             <div className="grid grid-cols-1 gap-4 mt-10">
               {program.highlights?.map((h, i) => (
                 <div key={i} className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white/10 border">
@@ -168,7 +167,7 @@ export default function ProgramPage() {
               ))}
             </div>
 
-            {/* Buttons */}
+            
             <div className="mt-8 flex flex-wrap gap-4">
               <motion.button whileHover={{ scale: 1.05, y: -2 }} className="px-8 py-3 bg-white text-purple-700 font-bold rounded-full flex items-center gap-2">
                 Enroll Now <ArrowRight className="w-5 h-5" />
@@ -181,13 +180,13 @@ export default function ProgramPage() {
 
           </div>
 
-          {/* RIGHT HERO IMAGE */}
+        
           <div className="flex justify-center md:justify-end animate-[fadeUp_1.2s_ease-out]">
             <div className="relative p-[3px] rounded-3xl bg-gradient-to-r from-purple-300 to-purple-500">
 
               <div className="bg-white/10 backdrop-blur-2xl rounded-3xl p-4 border shadow-xl">
 
-                {/* FIX #1 (mobile responsive image) */}
+                
 <img
   src={program.heroImg}
   alt={program.title}
@@ -203,7 +202,7 @@ export default function ProgramPage() {
         </div>
       </section>
 
-      {/* ⭐ PREMIUM HIGHLIGHTS SECTION */}
+     
       <div className="bg-purple-50">
          <motion.section
           className="max-w-7xl mx-auto px-6 py-20"
@@ -251,7 +250,7 @@ export default function ProgramPage() {
         </motion.section>
       </div>
 
-      {/* ⭐ PREMIUM CURRICULUM SECTION */}
+      
       <motion.section
         className="max-w-7xl mx-auto px-6 py-20"
         variants={fadeUp}
@@ -323,7 +322,7 @@ export default function ProgramPage() {
         </div>
       </motion.section>
 
-      {/* ⭐ PREMIUM LEARNING JOURNEY TIMELINE */}
+      
       <motion.section
         className="max-w-7xl mx-auto px-6 py-20"
         variants={fadeUp}
@@ -342,7 +341,7 @@ export default function ProgramPage() {
           <span className="text-purple-600">confident, project-ready developer.</span>
         </p>
 
-        {/* 🔥 FIX #3 — mobile friendly padding */}
+
         <div className="relative pl-6 sm:pl-10">
           <motion.div
             className="absolute left-4 top-0 bottom-0 w-[4px] bg-gradient-to-b from-purple-400 via-purple-500 to-indigo-600 rounded-full shadow-lg"
@@ -393,7 +392,7 @@ export default function ProgramPage() {
         </div>
       </motion.section>
 
-      {/* ⭐ PROFESSIONAL TOOLS & TECHNOLOGIES SECTION */}
+
       <motion.section
         className="max-w-7xl mx-auto px-6 py-20"
         variants={fadeUp}
@@ -432,7 +431,7 @@ export default function ProgramPage() {
         </div>
       </motion.section>
 
-      {/* ⭐ PROFESSIONAL SAMPLE PROJECTS SECTION */}
+     
       <motion.section
         className="max-w-7xl mx-auto px-6 py-20"
         variants={fadeUp}
@@ -481,7 +480,7 @@ export default function ProgramPage() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ y: -4, scale: 1.01 }}
 
-              /* 🔥 FIX #4: Mobile-friendly padding */
+              
               className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all 
               p-4 sm:p-6 flex flex-col gap-4"
             >
@@ -505,7 +504,7 @@ export default function ProgramPage() {
         </div>
       </motion.section>
 
-      {/* ⭐ PREMIUM AI STUDENT SUCCESS STORIES SECTION */}
+      
       <motion.section
   className="w-full px-4 sm:px-6 py-24 max-w-7xl mx-auto"
 
@@ -525,7 +524,7 @@ export default function ProgramPage() {
           </p>
         </div>
 
-        {/* 🔥 FIX #5 — Make slider mobile-friendly */}
+       
         <div className="relative overflow-hidden w-full">
 
           <motion.div
@@ -582,7 +581,7 @@ export default function ProgramPage() {
             ))}
           </motion.div>
 
-          {/* Dots */}
+         
           <div className="flex justify-center mt-6 gap-2">
             {finalTestimonials.map((_, idx) => (
               <button
@@ -599,10 +598,9 @@ export default function ProgramPage() {
         </div>
       </motion.section>
 
-      {/* ================= UNIQUE PREMIUM FINAL CTA ================= */}
+      
 <section className="relative py-32 overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#2b1055]">
 
-{/* Ambient glow */}
 <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-purple-600/30 blur-[180px] rounded-full" />
 <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-600/30 blur-[180px] rounded-full" />
 
@@ -615,7 +613,7 @@ export default function ProgramPage() {
     className="grid md:grid-cols-2 gap-16 items-center"
   >
 
-    {/* LEFT — CONTENT */}
+   
     <div className="text-white">
       <p className="uppercase tracking-widest text-purple-300 text-sm font-semibold mb-4">
         Career Transformation Program
@@ -632,7 +630,7 @@ export default function ProgramPage() {
         step into the industry.
       </p>
 
-      {/* Trust Pills */}
+
       <div className="flex flex-wrap gap-4 mt-8">
         {[
           "Beginner Friendly",
@@ -649,7 +647,7 @@ export default function ProgramPage() {
         ))}
       </div>
 
-      {/* CTA Buttons */}
+
       <div className="mt-12 flex flex-wrap gap-6">
       <motion.button
   whileHover={{ scale: 1.08, y: -4 }}
@@ -671,7 +669,7 @@ export default function ProgramPage() {
       </div>
     </div>
 
-    {/* RIGHT — VALUE CARD */}
+   
     <motion.div
       initial={{ opacity: 0, scale: 0.92 }}
       whileInView={{ opacity: 1, scale: 1 }}
@@ -679,7 +677,7 @@ export default function ProgramPage() {
       transition={{ duration: 0.7, ease: "easeOut" }}
       className="relative"
     >
-      {/* Gradient frame */}
+      
       <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-400 via-indigo-400 to-purple-600 blur-xl opacity-70" />
 
       <div className="relative bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-10 shadow-2xl">
